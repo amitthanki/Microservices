@@ -13,7 +13,7 @@
     },     
     {
         "DownstreamPathTemplate": "/api/persons/1",
-        "DownstreamScheme": "https",
+        "DownstreamScheme": "http",
         "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
