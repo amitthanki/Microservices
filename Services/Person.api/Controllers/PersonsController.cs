@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Database;
+
 
 namespace Person.api.Controllers
 {
@@ -15,6 +17,7 @@ namespace Person.api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+     
             //throw new Exception("ssd");
             return new string[] { "Person1", "Person2" };
         }

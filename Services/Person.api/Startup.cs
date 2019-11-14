@@ -47,8 +47,9 @@ namespace Person.api
             {
                 app.UseHsts();
             }
-             app.UseMiddleware<RequestResponseLoggingMiddleware>();
-            app.UseMiddleware<ExceptionHandler>();
+            app.UseApiResponseAndExceptionWrapper();
+         //   app.UseMiddleware<RequestResponseLoggingMiddleware>();
+          //  app.UseMiddleware<ExceptionHandler>();
 
             app.UseHttpsRedirection();
             app.UseMvc();
