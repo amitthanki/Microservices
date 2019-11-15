@@ -21,7 +21,7 @@ steps:
   inputs:
     command: publish
     publishWebProjects: false
-    projects: 'Services\Person.api\Person.api.csproj'
+    projects: '**/*.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: true
 
