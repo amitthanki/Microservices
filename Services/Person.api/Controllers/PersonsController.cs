@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Database;
+using Microsoft.Extensions.Options;
 
 
 namespace Person.api.Controllers
@@ -13,12 +14,18 @@ namespace Person.api.Controllers
     [ApiController]
     public class PersonsController : ControllerBase
     {
+      //  private IAppSettings _Appsettings;
+        private readonly IPerson _dbRepository;
+
+        public PersonsController(IPerson dep){
+               this._dbRepository = dep;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-     
-            //throw new Exception("ssd");
+           string name = string.Empty;
+           int i = _dbRepository.GetEmp(name);
             return new string[] { "Person1", "Person2" };
         }
 

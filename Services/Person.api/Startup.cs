@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
+using Database;
 
 namespace Person.api
 {
@@ -27,6 +28,11 @@ namespace Person.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           // var appSettings = new AppSettings();
+          //  services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            //ConfigurationBinder.Bind(Configuration.GetSection("AppSettings"),appSettings);
+          //  services.AddSingleton<IAppSettings>(appSettings);
+            services.AddTransient<IPerson,Persons>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
            // services.AddMvc().AddJsonOptions(options =>
           //  {
