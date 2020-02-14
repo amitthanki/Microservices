@@ -1,0 +1,15 @@
+build:-
+
+docker build -t accountownerapp .
+
+Run:-
+
+docker run -p 8080:80 accountownerapp
+
+See Container:-
+
+docker container ls
+
+Remove container
+
+docker rm -f <container name>
