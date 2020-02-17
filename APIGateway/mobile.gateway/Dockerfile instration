@@ -1,0 +1,45 @@
+Dockerfile Settings
+
+FROM mcr.microsoft.com/dotnet/core/runtime:2.2-stretch-slim AS base
+
+WORKDIR /app
+
+EXPOSE PortNumberOpenedOnDatabaseServer
+
+
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+
+WORKDIR /src
+
+COPY ["ProjectName.csproj", "ProjectName/"]
+
+RUN dotnet restore "./ProjectName.csproj"
+
+COPY . .
+
+WORKDIR "/src/."
+
+RUN dotnet build "ProjectName.csproj" -c Release -o /app/build
+
+
+
+FROM build AS publish
+
+RUN dotnet publish "ProjectName.csproj" -c Release -o /app/publish
+
+
+
+FROM base AS final
+
+WORKDIR /app
+
+COPY --from=publish /app/publish .
+
+ENTRYPOINT ["dotnet", "ProjectName.dll"]
+- If the above does not work for you try another note I documented here.
+
+-If the above does not work for you try editing the part that says:COPY ["ProjectName.csproj", "ProjectName/"] with the code below:
+
+WORKDIR /src
+
+COPY ["ProjectName.csproj", ""]
